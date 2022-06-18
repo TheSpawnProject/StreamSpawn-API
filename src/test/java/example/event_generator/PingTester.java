@@ -3,6 +3,7 @@ package example.event_generator;
 import net.programmer.igoodie.goodies.runtime.GoodieObject;
 import net.programmer.igoodie.goodies.util.Couple;
 import net.programmer.igoodie.streamspawn.api.StreamSpawnApi;
+import net.programmer.igoodie.streamspawn.api.configuration.DeferredConfig;
 import net.programmer.igoodie.streamspawn.api.configuration.StreamSpawnConfig;
 import net.programmer.igoodie.streamspawn.api.generator.SSEventGenerator;
 import net.programmer.igoodie.streamspawn.api.plugin.SSPluginLoader;
@@ -11,6 +12,7 @@ import util.TestUtils;
 
 import java.io.File;
 import java.net.URISyntaxException;
+import java.util.stream.Collectors;
 
 public class PingTester {
 
@@ -23,12 +25,12 @@ public class PingTester {
 
         String rootPath = "./build/test-configs";
 
-        for (StreamSpawnConfig config : StreamSpawnApi.getConfigs()) {
+        for (StreamSpawnConfig config : StreamSpawnApi.getConfigs().stream().map(DeferredConfig::get).collect(Collectors.toList())) {
             File configFile = new File(rootPath + File.separator + config.getConfigName());
             config.readConfig(configFile);
         }
 
-        for (SSEventGenerator eventGenerator : StreamSpawnApi.getEventGenerators()) {
+        for (SSEventGenerator<?> eventGenerator : StreamSpawnApi.getEventGenerators()) {
             eventGenerator.start();
         }
 
@@ -43,7 +45,7 @@ public class PingTester {
             }
         }
 
-        for (SSEventGenerator eventGenerator : StreamSpawnApi.getEventGenerators()) {
+        for (SSEventGenerator<?> eventGenerator : StreamSpawnApi.getEventGenerators()) {
             eventGenerator.stop();
         }
     }
@@ -53,12 +55,12 @@ public class PingTester {
         PingPlugin plugin = new PingPlugin();
         String rootPath = "./build/test-configs";
 
-        for (StreamSpawnConfig config : StreamSpawnApi.getConfigs()) {
+        for (StreamSpawnConfig config : StreamSpawnApi.getConfigs().stream().map(DeferredConfig::get).collect(Collectors.toList())) {
             File configFile = new File(rootPath + File.separator + config.getConfigName());
             config.readConfig(configFile);
         }
 
-        for (SSEventGenerator eventGenerator : StreamSpawnApi.getEventGenerators()) {
+        for (SSEventGenerator<?> eventGenerator : StreamSpawnApi.getEventGenerators()) {
             eventGenerator.start();
         }
 
@@ -75,7 +77,7 @@ public class PingTester {
             }
         }
 
-        for (SSEventGenerator eventGenerator : StreamSpawnApi.getEventGenerators()) {
+        for (SSEventGenerator<?> eventGenerator : StreamSpawnApi.getEventGenerators()) {
             eventGenerator.stop();
         }
     }

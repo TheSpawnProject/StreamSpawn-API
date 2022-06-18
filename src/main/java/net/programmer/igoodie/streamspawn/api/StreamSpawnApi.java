@@ -11,7 +11,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 public class StreamSpawnApi {
 
@@ -23,8 +22,8 @@ public class StreamSpawnApi {
         return config;
     }
 
-    public static List<StreamSpawnConfig> getConfigs() {
-        return Collections.unmodifiableList(CONFIGS.stream().map(DeferredConfig::get).collect(Collectors.toList()));
+    public static List<DeferredConfig<?>> getConfigs() {
+        return Collections.unmodifiableList(CONFIGS);
     }
 
     /* --------------------------------------- */
