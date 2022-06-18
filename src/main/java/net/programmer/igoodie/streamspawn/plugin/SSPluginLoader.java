@@ -1,11 +1,11 @@
 package net.programmer.igoodie.streamspawn.plugin;
 
 import com.vdurmont.semver4j.SemverException;
+import net.programmer.igoodie.goodies.util.ReflectionUtilities;
 import net.programmer.igoodie.tsl.TheSpawnLanguage;
 import net.programmer.igoodie.tsl.exception.TSLPluginLoadingException;
 import net.programmer.igoodie.tsl.plugin.TSLPluginLoader;
 import net.programmer.igoodie.tsl.plugin.TSLPluginManifest;
-import net.programmer.igoodie.util.ReflectionUtilities;
 
 import java.io.File;
 import java.io.IOException;
@@ -192,8 +192,6 @@ public class SSPluginLoader {
 
     private void checkManifestIntegrity(JarFile jarFile) {
         Attributes manifestAttrs = getJarManifestAttrs(jarFile);
-
-        System.out.println(manifestAttrs.keySet());
 
         if (manifestAttrs.getValue(TSLPluginManifest.ATTR_PLUGIN_ID) == null) {
             throw new TSLPluginLoadingException("Plugin manifest MUST have " + TSLPluginManifest.ATTR_PLUGIN_ID, uri.getPath());

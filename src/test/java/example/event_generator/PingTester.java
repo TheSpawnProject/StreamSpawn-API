@@ -1,11 +1,11 @@
 package example.event_generator;
 
 import net.programmer.igoodie.goodies.runtime.GoodieObject;
+import net.programmer.igoodie.goodies.util.Couple;
 import net.programmer.igoodie.streamspawn.StreamSpawnApi;
 import net.programmer.igoodie.streamspawn.configuration.StreamSpawnConfig;
 import net.programmer.igoodie.streamspawn.event.generator.SSEventGenerator;
 import net.programmer.igoodie.streamspawn.plugin.SSPluginLoader;
-import net.programmer.igoodie.util.Couple;
 import org.junit.jupiter.api.Test;
 import util.TestUtils;
 

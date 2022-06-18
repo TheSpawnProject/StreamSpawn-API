@@ -1,39 +1,47 @@
 package net.programmer.igoodie.streamspawn;
 
 import net.programmer.igoodie.goodies.runtime.GoodieObject;
+import net.programmer.igoodie.goodies.util.Couple;
+import net.programmer.igoodie.streamspawn.configuration.DeferredConfig;
 import net.programmer.igoodie.streamspawn.configuration.StreamSpawnConfig;
 import net.programmer.igoodie.streamspawn.event.generator.SSEventGenerator;
-import net.programmer.igoodie.util.Couple;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class StreamSpawnApi {
 
-    private final static List<StreamSpawnConfig> CONFIGS = new LinkedList<>();
+    private final static List<DeferredConfig<?>> CONFIGS = new LinkedList<>();
 
-    public static <T extends StreamSpawnConfig> T hookConfig(T config) {
+    public static <T extends StreamSpawnConfig> DeferredConfig<T> hookConfig(Supplier<T> configGenerator) {
+        DeferredConfig<T> config = new DeferredConfig<>(configGenerator);
         CONFIGS.add(config);
         return config;
     }
 
     public static List<StreamSpawnConfig> getConfigs() {
-        return Collections.unmodifiableList(CONFIGS);
+        return Collections.unmodifiableList(CONFIGS.stream().map(DeferredConfig::get).collect(Collectors.toList()));
     }
 
     /* --------------------------------------- */
 
-    private final static List<SSEventGenerator> EVENT_GENERATORS = new LinkedList<>();
+    private final static List<SSEventGenerator<?>> EVENT_GENERATORS = new LinkedList<>();
 
-    public static <T extends SSEventGenerator> T hookEventGenerator(T eventGenerator) {
+    public static <T extends SSEventGenerator<?>> T hookEventGenerator(T eventGenerator) {
         EVENT_GENERATORS.add(eventGenerator);
         return eventGenerator;
     }
 
-    public static List<SSEventGenerator> getEventGenerators() {
+    public static List<SSEventGenerator<?>> getEventGenerators() {
         return Collections.unmodifiableList(EVENT_GENERATORS);
+    }
+
+    public static void stopAllEventGenerators() {
+        EVENT_GENERATORS.forEach(SSEventGenerator::stop);
     }
 
     /* --------------------------------------- */
@@ -59,7 +67,6 @@ public class StreamSpawnApi {
     }
 
     /* --------------------------------------- */
-
 
 
 }

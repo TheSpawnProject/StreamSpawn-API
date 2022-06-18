@@ -4,17 +4,27 @@ import example.event_generator.PingPlugin;
 import net.programmer.igoodie.goodies.runtime.GoodieObject;
 import net.programmer.igoodie.streamspawn.StreamSpawnApi;
 import net.programmer.igoodie.streamspawn.event.generator.SSEventGenerator;
-import net.programmer.igoodie.streamspawn.plugin.SSPlugin;
 
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class PingGenerator extends SSEventGenerator {
+public class PingGenerator extends SSEventGenerator<PingPlugin> {
 
     private Timer timer;
 
-    public PingGenerator(SSPlugin plugin) {
+    public PingGenerator(PingPlugin plugin) {
         super(plugin);
+    }
+
+    @Override
+    public String getName() {
+        return "Ping Generator";
+    }
+
+    @Override
+    public boolean isRunning() {
+        return timer != null;
     }
 
     @Override
@@ -24,12 +34,17 @@ public class PingGenerator extends SSEventGenerator {
             @Override
             public void run() {
                 StreamSpawnApi.pushEvent("Ping", new GoodieObject());
+                if (new Random().nextBoolean()) {
+                    System.out.println("Decided to randomly stop.");
+                    StreamSpawnApi.stopAllEventGenerators();
+                }
             }
-        }, 0, ((PingPlugin) this.plugin).config.getPeriod() * 1000);
+        }, 0, this.plugin.config.get().getPeriod() * 1000);
     }
 
     @Override
     public void stop() {
+        if (timer == null) return;
         timer.purge();
         timer.cancel();
         timer = null;

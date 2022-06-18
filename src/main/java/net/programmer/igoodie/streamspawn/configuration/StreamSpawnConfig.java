@@ -1,6 +1,6 @@
 package net.programmer.igoodie.streamspawn.configuration;
 
-import net.programmer.igoodie.configuration.JsonConfiGoodie;
+import net.programmer.igoodie.goodies.configuration.JsonConfiGoodie;
 
 public abstract class StreamSpawnConfig extends JsonConfiGoodie {
 
