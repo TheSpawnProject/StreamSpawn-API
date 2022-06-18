@@ -2,8 +2,8 @@ package example.event_generator.generator;
 
 import example.event_generator.PingPlugin;
 import net.programmer.igoodie.goodies.runtime.GoodieObject;
-import net.programmer.igoodie.streamspawn.StreamSpawnApi;
-import net.programmer.igoodie.streamspawn.event.generator.SSEventGenerator;
+import net.programmer.igoodie.streamspawn.api.StreamSpawnApi;
+import net.programmer.igoodie.streamspawn.api.generator.SSEventGenerator;
 
 import java.util.Random;
 import java.util.Timer;

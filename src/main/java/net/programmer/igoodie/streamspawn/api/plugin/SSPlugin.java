@@ -1,4 +1,4 @@
-package net.programmer.igoodie.streamspawn.plugin;
+package net.programmer.igoodie.streamspawn.api.plugin;
 
 import net.programmer.igoodie.tsl.plugin.TSLPluginManifest;
 

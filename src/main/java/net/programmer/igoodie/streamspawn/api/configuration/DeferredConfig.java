@@ -1,4 +1,4 @@
-package net.programmer.igoodie.streamspawn.configuration;
+package net.programmer.igoodie.streamspawn.api.configuration;
 
 import java.util.function.Supplier;
 

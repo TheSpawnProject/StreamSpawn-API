@@ -2,9 +2,9 @@ package example.event_generator;
 
 import example.event_generator.configuration.PingConfig;
 import example.event_generator.generator.PingGenerator;
-import net.programmer.igoodie.streamspawn.StreamSpawnApi;
-import net.programmer.igoodie.streamspawn.configuration.DeferredConfig;
-import net.programmer.igoodie.streamspawn.plugin.SSPlugin;
+import net.programmer.igoodie.streamspawn.api.StreamSpawnApi;
+import net.programmer.igoodie.streamspawn.api.configuration.DeferredConfig;
+import net.programmer.igoodie.streamspawn.api.plugin.SSPlugin;
 
 public class PingPlugin extends SSPlugin {
 

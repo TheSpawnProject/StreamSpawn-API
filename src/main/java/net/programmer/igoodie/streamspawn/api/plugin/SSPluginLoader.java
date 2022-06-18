@@ -1,4 +1,4 @@
-package net.programmer.igoodie.streamspawn.plugin;
+package net.programmer.igoodie.streamspawn.api.plugin;
 
 import com.vdurmont.semver4j.SemverException;
 import net.programmer.igoodie.goodies.util.ReflectionUtilities;

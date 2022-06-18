@@ -2,7 +2,7 @@ package example.event_generator.configuration;
 
 import net.programmer.igoodie.goodies.configuration.validation.annotation.GoodieLong;
 import net.programmer.igoodie.goodies.serialization.annotation.Goodie;
-import net.programmer.igoodie.streamspawn.configuration.StreamSpawnConfig;
+import net.programmer.igoodie.streamspawn.api.configuration.StreamSpawnConfig;
 
 public class PingConfig extends StreamSpawnConfig {
 

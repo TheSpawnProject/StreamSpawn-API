@@ -1,6 +1,6 @@
-package net.programmer.igoodie.streamspawn.event.generator;
+package net.programmer.igoodie.streamspawn.api.generator;
 
-import net.programmer.igoodie.streamspawn.plugin.SSPlugin;
+import net.programmer.igoodie.streamspawn.api.plugin.SSPlugin;
 
 public abstract class SSEventGenerator<P extends SSPlugin> {
 

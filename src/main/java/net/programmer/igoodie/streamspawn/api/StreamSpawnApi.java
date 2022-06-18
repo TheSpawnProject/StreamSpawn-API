@@ -1,10 +1,10 @@
-package net.programmer.igoodie.streamspawn;
+package net.programmer.igoodie.streamspawn.api;
 
 import net.programmer.igoodie.goodies.runtime.GoodieObject;
 import net.programmer.igoodie.goodies.util.Couple;
-import net.programmer.igoodie.streamspawn.configuration.DeferredConfig;
-import net.programmer.igoodie.streamspawn.configuration.StreamSpawnConfig;
-import net.programmer.igoodie.streamspawn.event.generator.SSEventGenerator;
+import net.programmer.igoodie.streamspawn.api.configuration.DeferredConfig;
+import net.programmer.igoodie.streamspawn.api.configuration.StreamSpawnConfig;
+import net.programmer.igoodie.streamspawn.api.generator.SSEventGenerator;
 
 import java.util.Collections;
 import java.util.LinkedList;
