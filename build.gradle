@@ -5,6 +5,8 @@ plugins {
 group 'net.programmer.igoodie'
 version '1.0.0'
 
+sourceCompatibility = 1.8
+
 repositories {
     maven { url 'https://jitpack.io' }
     mavenCentral()
